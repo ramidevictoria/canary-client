@@ -1,0 +1,13 @@
+@import '../../../scss/index.scss';
+
+.register-form {
+    text-align: left;
+
+    .ant-form-item {
+        &:nth-child(3),
+        &:last-of-type {
+            margin: 0 !important;
+        }
+    }
+
+}
