@@ -13,14 +13,14 @@ export default function MenuWeb() {
     //get the menus and reload page
     useEffect(() => {
         getMenusApi()
-        .then(response => {
-            setMenu(response.menus);
-            setReloadMenuWeb(false);
-        })
-        .catch(err => {
-            notification['error']({message: err});
+            .then(response => {
+                setMenu(response.menus);
+            })
+            .catch(err => {
+                notification['error']({message: err});
+        setReloadMenuWeb(false);
         });
-    }, [setReloadMenuWeb]);
+    }, [reloadMenuWeb]);
 
 
 

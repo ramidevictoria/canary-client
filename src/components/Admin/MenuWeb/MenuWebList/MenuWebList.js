@@ -6,6 +6,7 @@ import DragSortableList from 'react-drag-sortable';
 import { updateMenuApi, activateMenuApi } from '../../../../api/menu';
 import { getAccessTokenApi} from "../../../../api/auth";
 import AddMenuWebForm from '../AddMenuWebForm';
+import EditMenuWebForm from '../EditMenuWebForm';
 
 import './MenuWebList.scss';
 
@@ -36,7 +37,7 @@ export default function MenuWebList(props) {
         let listItemsArray = [];
         
         menu.forEach(item => {
-            listItemsArray.push({content: (<MenuItem item={item} activateMenu={activateMenu} />)});
+            listItemsArray.push({content: (<MenuItem item={item} activateMenu={activateMenu} editMenuWebModal={editMenuWebModal} />)});
         });
         setListItems(listItemsArray); 
     }, [menu]);
@@ -60,6 +61,13 @@ export default function MenuWebList(props) {
         setModalContent(<AddMenuWebForm setIsVisibleModal={setIsVisibleModal} setReloadMenuWeb={setReloadMenuWeb} />);
     }
 
+    const editMenuWebModal = (menu) => {
+        setIsVisibleModal(true);
+        setModalTitle(`Editando menu: "${menu.title}"`);
+        setModalContent(<EditMenuWebForm menu={menu} setReloadMenuWeb={setReloadMenuWeb} setIsVisibleModal={setIsVisibleModal} />);
+    }
+
+
     return (
         <div className="menu-web-list">
             <div className="menu-web-list__header">
@@ -82,17 +90,17 @@ export default function MenuWebList(props) {
 }
 
 function MenuItem(props) {
-    const { item, activateMenu } = props; 
+    const { item, activateMenu, editMenuWebModal } = props; 
 
     return (
         <List.Item
             actions={[
                 <Switch defaultChecked={item.active} onChange={e => {activateMenu(item, e)}} />,
-                <Button type="primary"><EditOutlined /></Button>,
+                <Button type="primary" onClick={() => editMenuWebModal(item)}><EditOutlined /></Button>,
                 <Button type="danger" ><DeleteOutlined /></Button>
             ]}
         >
-            <List.Item.Meta title={item.title} description={item.description} />
+            <List.Item.Meta title={item.title} description={item.url} />
         </List.Item>
     );
 }   
