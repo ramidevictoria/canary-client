@@ -23,9 +23,10 @@ export default function EditMenuWebForm(props) {
 
             updateMenuApi(accesToken, menuWebData._id, menuWebData)
                 .then(response => {
+                    setReloadMenuWeb(true);
                     notification['success']({message: response});
                     setIsVisibleModal(false);
-                    setReloadMenuWeb(true);
+                    
                     
                 })
                 .catch(err => {

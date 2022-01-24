@@ -17,14 +17,16 @@ export default function MenuWeb() {
                 setMenu(response.menus);
             })
             .catch(err => {
-                notification['error']({message: err});
-        setReloadMenuWeb(false);
+                notification['error']({message: err}
+            );
         });
+        setReloadMenuWeb(false);
     }, [reloadMenuWeb]);
 
 
 
-    return (<div className="menu-web">
+    return (
+        <div className="menu-web">
             <MenuWebList menu={menu} setReloadMenuWeb={setReloadMenuWeb} />
         </div>);
 }
