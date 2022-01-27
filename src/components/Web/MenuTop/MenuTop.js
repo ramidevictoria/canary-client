@@ -13,16 +13,12 @@ export default function MenuTop() {
     useEffect(() => {
         getMenusApi()
             .then(response => {
-                const arrayMenu = 
-                response.menus.filter(item => {
-                    return item.active;
-                });
-                setMenuData(arrayMenu);
+                setMenuData(response.menus.filter(item => (item.active)));
             });   
     }, [menuData]);
 
     return (
-        <Menu className="menu-top-web">
+        <Menu className="menu-top-web" mode="horizontal">
             <Menu.Item className="menu-top-web__logo">
                 <Link to={"/"}>
                     <img src={logo} alt="canary" />
@@ -34,7 +30,7 @@ export default function MenuTop() {
                 if (external) {
                     return (
                         <Menu.Item key={item._id} className="menu-top-web__item" >
-                            <Link target="_blank"  to={item.url}>{item.title}</Link>
+                            <Link target="_blank"  href={item.url}>{item.title}</Link>
                         </Menu.Item>
                     );
                 } else {
@@ -46,9 +42,8 @@ export default function MenuTop() {
                 }
                 
             })}
-            <Menu.Item className="menu-top__item">
-                <SocialLinks />
-            </Menu.Item>
+            
+            <SocialLinks />
         </Menu>
     );
 }

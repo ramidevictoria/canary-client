@@ -1,0 +1,44 @@
+@import '../../../index.scss';
+
+.user-reviews {
+    margin-top: 50px;
+    margin-bottom: 100px;
+
+    &__title {
+        text-align: center;
+        
+
+        h2 {
+            font-size: 32px;
+            color: $font-grey-light;
+        }
+    }
+
+    .row-cards {
+        .ant-col {
+            padding: 15px;
+        }
+    }
+
+    &__card {
+        background-color: transparent;
+        border: none;
+        color: $blue-ligth-light;
+
+
+        .ant-card-body {
+            min-height: 275px;
+        }
+
+        .ant-card-meta-detail {
+            .ant-card-meta-title {
+              color: white;
+              font-weight: bold;
+            }
+            .ant-card-meta-description {
+                color: $blue-ligth-light;
+            }
+            
+          }
+    }
+}

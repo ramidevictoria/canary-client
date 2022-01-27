@@ -10,15 +10,18 @@ export default function LayoutBasic(props) {
     const { Content, Footer} = Layout;
 
     return (
+        <>
         <Row>
             <Col lg={4} />
             <Col lg={16}>
                 <MenuTop />
-                <LoadRoutes routes={routes} />
-                <Footer >Canary</Footer>
+                
             </Col>
             <Col lg={4} />
         </Row>
+        <LoadRoutes routes={routes} />
+        <Footer >Canary</Footer>
+        </>
     );
 }
 
