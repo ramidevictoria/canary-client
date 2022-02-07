@@ -4,10 +4,11 @@ import { Row, Col, Layout } from 'antd';
 import './LayoutBasic.scss';
 import MenuTop from '../components/Web/MenuTop';
 import Menu from 'rc-menu';
+import Footer from '../components/Web/Footer';
 
 export default function LayoutBasic(props) {
     const { routes } = props;
-    const { Content, Footer} = Layout;
+    const { Content } = Layout;
 
     return (
         <>
@@ -15,12 +16,11 @@ export default function LayoutBasic(props) {
             <Col lg={4} />
             <Col lg={16}>
                 <MenuTop />
-                
             </Col>
             <Col lg={4} />
         </Row>
         <LoadRoutes routes={routes} />
-        <Footer >Canary</Footer>
+        <Footer />
         </>
     );
 }

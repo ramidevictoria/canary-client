@@ -30,7 +30,7 @@ export default function MenuTop() {
                 if (external) {
                     return (
                         <Menu.Item key={item._id} className="menu-top-web__item" >
-                            <Link target="_blank"  href={item.url}>{item.title}</Link>
+                            <Link target="_blank"  to={item.url}>{item.title}</Link>
                         </Menu.Item>
                     );
                 } else {

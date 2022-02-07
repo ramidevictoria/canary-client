@@ -4,6 +4,7 @@ import AdminHome from '../pages/Admin';
 import AdminSignIn from '../pages/Admin/SignIn';
 import AdminUsers from '../pages/Admin/Users';
 import MenuWeb from '../pages/Admin/MenuWeb';
+import Courses from '../pages/Admin/Courses';
 
 // Pages
 import Home from '../pages/Home';
@@ -37,6 +38,11 @@ const routes = [
             {
                 path: '/admin/menu',
                 component: MenuWeb,
+                exact: true
+            },
+            {
+                path: '/admin/courses',
+                component: Courses,
                 exact: true
             },
             {

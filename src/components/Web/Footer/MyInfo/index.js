@@ -1,1 +1,1 @@
-import {default } from './MyInfo';
+export {default } from './MyInfo';

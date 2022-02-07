@@ -1,0 +1,18 @@
+@import '../../../index.scss';
+
+.newsletter {
+    margin-top: 50px;
+    text-align: center;
+    padding: 10px;
+
+    input {
+        height: 35px;
+        font-size: 20px;
+        width: 80%;
+      }
+    
+      button {
+        width: 80%;
+        height: 45px;
+      }
+}

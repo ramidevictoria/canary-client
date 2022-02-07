@@ -1,5 +1,14 @@
 @import '../../../../index.scss';
 
 .my-info {
-    
+    img {
+        width: 150px;
+        height: 100%;
+    }
+
+    &__title {
+        font-size: 45px;
+        font-weight: 500;
+        color: $yellow;
+    }
 }
