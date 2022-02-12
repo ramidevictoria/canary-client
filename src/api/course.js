@@ -38,8 +38,8 @@ export function addCourseApi(accessToken, course) {
     const params = {
         method: 'POST',
         headers: {
-            type: 'Application/json',
-            Authentication: accessToken
+            "Content-Type": 'Application/json',
+            Authorization: accessToken
         },
         body: JSON.stringify(course)
     }
@@ -57,11 +57,50 @@ export function addCourseApi(accessToken, course) {
 
 }
 
-export function editCourseApi() {
-    console.log('edit');
+export function editCourseApi(accessToken, id, data) {
+    const url = `${basePath}/${apiVersion}/update-course/${id}`;
+
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: accessToken
+    },
+    body: JSON.stringify(data)
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err;
+    });
 }
 
-export function deleteCourseApi() {
-    console.log('delete');
+export function deleteCourseApi(token, id) {
+    const url = `${basePath}/${apiVersion}/delete-course/${id}`;
+
+  const params = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    }
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err;
+    });
 }
 

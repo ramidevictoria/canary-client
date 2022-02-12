@@ -5,7 +5,7 @@ import CoursesList from '../../../components/Admin/CoursesList';
 
 import './Courses.scss';
 
-export default function Courses() {
+export default function AdminCourses() {
     const [courses, setCourses] = useState([]);
     const [reloadCourses, setReloadCourses] = useState(false);
 

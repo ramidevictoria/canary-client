@@ -4,7 +4,10 @@ import AdminHome from '../pages/Admin';
 import AdminSignIn from '../pages/Admin/SignIn';
 import AdminUsers from '../pages/Admin/Users';
 import MenuWeb from '../pages/Admin/MenuWeb';
-import Courses from '../pages/Admin/Courses';
+import AdminCourses from '../pages/Admin/Courses';
+import AdminBlog from '../pages/Admin/Blog';
+import Blog from '../pages/Blog';
+import Courses from '../pages/Courses';
 
 // Pages
 import Home from '../pages/Home';
@@ -42,7 +45,12 @@ const routes = [
             },
             {
                 path: '/admin/courses',
-                component: Courses,
+                component: AdminCourses,
+                exact: true
+            },
+            {
+                path: '/admin/blog',
+                component: AdminBlog,
                 exact: true
             },
             {
@@ -63,6 +71,21 @@ const routes = [
             {
                 path: '/contact',
                 component: Contact,
+                exact: true
+            },
+            {
+                path: '/courses',
+                component: Courses,
+                exact: true
+            },
+            {
+                path: '/blog',
+                component: Blog,
+                exact: true
+            },
+            {
+                path: "/blog/:url",
+                component: Blog,
                 exact: true
             },
             {

@@ -207,7 +207,6 @@ function EditForm(props) {
                         <Input.Password
                             prefix={<LockOutlined />}
                             placeholder="Repeat Password"
-                            value={userData.repeatPassword}
                             onChange={e => setUserData({...userData, repeatPassword: e.target.value})}
                         />
                     </Form.Item>

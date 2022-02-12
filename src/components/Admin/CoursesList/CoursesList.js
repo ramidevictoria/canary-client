@@ -6,7 +6,7 @@ import { getAccessTokenApi } from '../../../api/auth';
 import { EditOutlined, DeleteOutlined} from '@ant-design/icons';
 import CourseForm from './CourseForm';
 
-import {getCourseDataUdemyApi, deleteCourseApi, editCourseApi, getCoursesApi } from '../../../api/course';
+import {getCourseDataUdemyApi, deleteCourseApi, editCourseApi } from '../../../api/course';
 
 import './CoursesList.scss';
 
@@ -35,8 +35,14 @@ export default function CoursesList(props) {
         setListCourses(listCourseArray);
       }, [courses]);
 
-    const onSort = (sertedList, dropEvent) => {
+    const onSort = (sortedList, dropEvent) => {
+        const accessToken = getAccessTokenApi();
 
+        sortedList.forEach(item => {
+          const { _id } = item.content.props.course;
+          const order = item.rank;
+          editCourseApi(accessToken, _id, { order });
+        });
     }
 
     const editCourseModal = function(course) {
@@ -108,15 +114,22 @@ function Course(props) {
     useEffect(() => {
         getCourseDataUdemyApi(course.idCourse)
             .then(response => {
-                if (response.status !== 200) {
+                if (response.code !== 200) {
                     notification['warning']({message: 'Curso no encontrado en Udemy'});
                 }
+                
+                setCourseData(response.data);
+                
             })
             .catch(err => {
                 notification['error']({message: 'Error en Udemy'});
             })
 
-    }, [course]) 
+    }, [course])
+
+    if (!courseData) {
+        return null;
+      }
 
     return (
     
@@ -135,7 +148,7 @@ function Course(props) {
             />
 
             <List.Item.Meta 
-                title={courseData.title + ' | id: ' + courseData.idCourse }
+                title={courseData.title + ' | id: ' + courseData.id }
                 description={courseData.headline}
             />
 
